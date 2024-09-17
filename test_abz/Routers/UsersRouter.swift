@@ -16,7 +16,7 @@ class UsersRouter: BaseRouter, UsersRouting {
     
     var mainRouter: MainRouting?
     
-//    private var movieListViewController: MovieListViewController?
+    private var usersViewController: UsersViewController?
     private var navigationController: UINavigationController?
     
     // MARK: - Memory management
@@ -25,27 +25,27 @@ class UsersRouter: BaseRouter, UsersRouting {
         super.init(with: assembly)
     }
     
-    // MARK: - MovieListRouting
+    // MARK: - UsersRouting
     
     override func initialViewController() -> UIViewController {
         
         if navigationController == nil {
-//            let vc: MovieListViewController = assembly.assemblyMovieListViewController(with: self)
+            let vc: UsersViewController = assembly.assemblyUsersViewController(with: self)
           
             let symbol = "popcorn.fill"
             let activeImage = UIImage(systemName: symbol)?.withTintColor(.orange, renderingMode: .alwaysOriginal)
             let inactiveImage = UIImage(systemName: symbol)?.withTintColor(.systemGray, renderingMode: .alwaysOriginal)
             
             
-//            vc.tabBarItem.title = "Movies"
-//            vc.tabBarItem.image = inactiveImage
-//            vc.tabBarItem.selectedImage = activeImage
-//            vc.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .selected)
+            vc.tabBarItem.title = "Users"
+            vc.tabBarItem.image = inactiveImage
+            vc.tabBarItem.selectedImage = activeImage
+            vc.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .selected)
             
-//            movieListViewController = vc
-//            navigationController = assembly.assemblyNavigationController(with: vc)
-//            
-//            mainRouter = instantiateMainRouter()
+            usersViewController = vc
+            navigationController = assembly.assemblyNavigationController(with: vc)
+            
+            mainRouter = instantiateMainRouter()
         }
         return navigationController!
     }

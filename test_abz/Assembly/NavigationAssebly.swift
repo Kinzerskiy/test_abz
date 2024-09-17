@@ -39,8 +39,6 @@ protocol NavigationAssemblyProtocol: CommonNavigationAssemblyProtocol,
 
 class NavigationAssembly: BaseAssembly, NavigationAssemblyProtocol {
    
-    
-    
     private static let mainStoryboardName = "Main"
     private static let usersStoryboardName = "Users"
     private static let signupStoryboardName = "SignUp"

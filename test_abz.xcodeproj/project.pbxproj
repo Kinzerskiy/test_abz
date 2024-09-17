@@ -28,6 +28,8 @@
 		3A1637742C99BDBD00542EB6 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1637732C99BDBD00542EB6 /* NavigationController.swift */; };
 		3A1637762C99BEA000542EB6 /* SignupRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1637752C99BEA000542EB6 /* SignupRouter.swift */; };
 		3A1637782C99BFD000542EB6 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1637772C99BFD000542EB6 /* Defaults.swift */; };
+		3A16377B2C99C43300542EB6 /* Color+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A16377A2C99C43300542EB6 /* Color+extension.swift */; };
+		3A16377E2C99C7CB00542EB6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A1637492C99B9BE00542EB6 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +56,7 @@
 		3A1637732C99BDBD00542EB6 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		3A1637752C99BEA000542EB6 /* SignupRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupRouter.swift; sourceTree = "<group>"; };
 		3A1637772C99BFD000542EB6 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
+		3A16377A2C99C43300542EB6 /* Color+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				3A1637772C99BFD000542EB6 /* Defaults.swift */,
+				3A16377A2C99C43300542EB6 /* Color+extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -213,6 +217,7 @@
 				3A16374D2C99B9C000542EB6 /* Assets.xcassets in Resources */,
 				3A16376D2C99BD3500542EB6 /* Users.storyboard in Resources */,
 				3A1637502C99B9C000542EB6 /* Base in Resources */,
+				3A16377E2C99C7CB00542EB6 /* Main.storyboard in Resources */,
 				3A16374B2C99B9BE00542EB6 /* Base in Resources */,
 				3A16376F2C99BD3E00542EB6 /* SignUp.storyboard in Resources */,
 			);
@@ -227,6 +232,7 @@
 			files = (
 				3A1637582C99B9EC00542EB6 /* ApplicationAssembly.swift in Sources */,
 				3A1637782C99BFD000542EB6 /* Defaults.swift in Sources */,
+				3A16377B2C99C43300542EB6 /* Color+extension.swift in Sources */,
 				3A1637642C99BAB400542EB6 /* BaseRouter.swift in Sources */,
 				3A16375F2C99BA6C00542EB6 /* MainRouter.swift in Sources */,
 				3A1637662C99BBD600542EB6 /* UsersRouter.swift in Sources */,

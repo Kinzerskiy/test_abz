@@ -36,7 +36,7 @@ class MainRouter: BaseRouter, MainRouting {
         self.navigationController = navigationController
     }
     
-    // MARK: - MovieListRouting
+    // MARK: - UsersRouting
     
     override func initialViewController() -> UIViewController {
         
