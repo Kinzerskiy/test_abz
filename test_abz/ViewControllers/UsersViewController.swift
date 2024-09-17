@@ -7,7 +7,9 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class UsersViewController: UIViewController {
+    
+    var router: UsersRouting?
 
     override func viewDidLoad() {
         super.viewDidLoad()
