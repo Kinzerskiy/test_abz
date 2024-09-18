@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FieldTableViewCell" rowHeight="168" id="KGk-i7-Jjw" customClass="FieldTableViewCell" customModule="test_abz" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="396" height="168"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="396" height="168"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="17r-QM-xB6">
+                        <rect key="frame" x="15" y="5" width="366" height="138"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q6j-5T-zGu">
+                        <rect key="frame" x="15" y="148" width="376" height="16.333333333333343"/>
+                        <fontDescription key="fontDescription" name="NotoSansKannada-Light" family="Noto Sans Kannada" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="Q6j-5T-zGu" secondAttribute="trailing" constant="5" id="8Cg-SH-4gH"/>
+                    <constraint firstAttribute="trailing" secondItem="17r-QM-xB6" secondAttribute="trailing" constant="15" id="FO6-pa-5Vx"/>
+                    <constraint firstAttribute="bottom" secondItem="17r-QM-xB6" secondAttribute="bottom" constant="25" id="GUB-UZ-Nv9"/>
+                    <constraint firstItem="17r-QM-xB6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="LZ9-mU-Ozj"/>
+                    <constraint firstItem="Q6j-5T-zGu" firstAttribute="top" secondItem="17r-QM-xB6" secondAttribute="bottom" constant="5" id="VyM-kz-vvm"/>
+                    <constraint firstItem="Q6j-5T-zGu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Xiz-nD-nLy"/>
+                    <constraint firstItem="17r-QM-xB6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="oHr-gS-F5D"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="infoLabel" destination="Q6j-5T-zGu" id="zVp-Fq-xHT"/>
+                <outlet property="userTextField" destination="17r-QM-xB6" id="NTI-l1-ut2"/>
+            </connections>
+            <point key="canvasLocation" x="196.94656488549617" y="62.676056338028175"/>
+        </tableViewCell>
+    </objects>
+</document>

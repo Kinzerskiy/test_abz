@@ -15,19 +15,18 @@ protocol CommonNavigationAssemblyProtocol {
 
 protocol MainNavigationAssemblyProtocol {
     func assemblyIntroViewController(with router: MainRouting) -> IntroViewController
+    func assemblyNoInternetViewController(with router: MainRouting) -> NoInternetViewController
 }
 
 protocol UsersAssemblyProtocol {
     func assemblyUsersViewController(with router: UsersRouting) -> UsersViewController
 }
 
-
 protocol SignupAssemblyProtocol {
     func assemblySignupViewController(with router: SignupRouting) -> SignupViewController
+    func assemblySuccessViewController(with router: SignupRouting) -> SuccessViewController
+    func assemblyFailViewController(with router: SignupRouting) -> FailViewController
 }
-
-
-
 
 protocol NavigationAssemblyProtocol: CommonNavigationAssemblyProtocol,
                                      MainNavigationAssemblyProtocol,
@@ -83,6 +82,13 @@ class NavigationAssembly: BaseAssembly, NavigationAssemblyProtocol {
         return vc
     }
     
+    func assemblyNoInternetViewController(with router: MainRouting) -> NoInternetViewController {
+        let vc: NoInternetViewController = mainStoryboard().instantiateViewController(withIdentifier: String(describing: NoInternetViewController.self)) as! NoInternetViewController
+        vc.router = router
+        
+        return vc
+    }
+    
     
     // MARK: Users
     
@@ -97,6 +103,21 @@ class NavigationAssembly: BaseAssembly, NavigationAssemblyProtocol {
     
     func assemblySignupViewController(with router: any SignupRouting) -> SignupViewController {
         let vc: SignupViewController = signupStoryboard().instantiateViewController(withIdentifier: String(describing: SignupViewController.self)) as! SignupViewController
+        vc.router = router
+        
+        return vc
+    }
+    
+    func assemblySuccessViewController(with router: any SignupRouting) -> SuccessViewController {
+        let vc: SuccessViewController = signupStoryboard().instantiateViewController(withIdentifier: String(describing: SuccessViewController.self)) as! SuccessViewController
+        vc.router = router
+        
+        return vc
+    }
+    
+    
+    func assemblyFailViewController(with router: SignupRouting) -> FailViewController {
+        let vc: FailViewController = signupStoryboard().instantiateViewController(withIdentifier: String(describing: FailViewController.self)) as! FailViewController
         vc.router = router
         
         return vc

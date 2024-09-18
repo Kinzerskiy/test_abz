@@ -15,16 +15,189 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GmM-2C-3IT">
+                                <rect key="frame" x="0.0" y="59" width="393" height="60"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Working with POST request" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4R9-Cc-DSc">
+                                        <rect key="frame" x="50" y="13.666666666666671" width="293.33333333333331" height="32.666666666666664"/>
+                                        <fontDescription key="fontDescription" name="NotoSansKannada-Light" family="Noto Sans Kannada" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="4R9-Cc-DSc" firstAttribute="centerY" secondItem="GmM-2C-3IT" secondAttribute="centerY" id="UMb-Fc-esx"/>
+                                    <constraint firstAttribute="height" constant="60" id="Wzs-PW-Hmb"/>
+                                    <constraint firstItem="4R9-Cc-DSc" firstAttribute="centerX" secondItem="GmM-2C-3IT" secondAttribute="centerX" id="vKB-kb-uO6"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="8ft-nL-9QD">
+                                <rect key="frame" x="0.0" y="151" width="393" height="597"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yIX-bc-QY0">
+                                <rect key="frame" x="126.66666666666669" y="778" width="140" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="140" id="8QQ-1g-sw1"/>
+                                    <constraint firstAttribute="height" constant="40" id="UtV-Ya-INN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Sign up">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="postDidTap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="8Mp-4T-oC6"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="yIX-bc-QY0" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="1F8-ov-XQZ"/>
+                            <constraint firstItem="8ft-nL-9QD" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="3F0-1a-GDF"/>
+                            <constraint firstItem="yIX-bc-QY0" firstAttribute="bottom" secondItem="5EZ-qb-Rvc" secondAttribute="bottomMargin" id="4sL-FZ-2MG"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="GmM-2C-3IT" secondAttribute="trailing" id="EjX-cZ-caX"/>
+                            <constraint firstItem="GmM-2C-3IT" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Lup-nt-Tcn"/>
+                            <constraint firstItem="8ft-nL-9QD" firstAttribute="top" secondItem="GmM-2C-3IT" secondAttribute="bottom" constant="32" id="Qtw-Vw-NSN"/>
+                            <constraint firstItem="GmM-2C-3IT" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Z3s-hU-9kc"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="8ft-nL-9QD" secondAttribute="bottom" constant="70" id="Zhm-cu-wPz"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="8ft-nL-9QD" secondAttribute="trailing" id="yXM-NL-vcK"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="backgroundView" destination="GmM-2C-3IT" id="tim-te-TsK"/>
+                        <outlet property="signupButton" destination="yIX-bc-QY0" id="mdf-WO-eo5"/>
+                        <outlet property="tableView" destination="8ft-nL-9QD" id="btf-e9-jVF"/>
+                        <outlet property="workingWithLabel" destination="4R9-Cc-DSc" id="R4C-3Z-pj8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="-2"/>
+            <point key="canvasLocation" x="52.671755725190835" y="-2.1126760563380285"/>
+        </scene>
+        <!--Success View Controller-->
+        <scene sceneID="iE7-nS-IHZ">
+            <objects>
+                <viewController storyboardIdentifier="SuccessViewController" id="9nf-lE-OFD" customClass="SuccessViewController" customModule="test_abz" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9s4-ZU-Prh">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="success" translatesAutoresizingMaskIntoConstraints="NO" id="znU-Wl-bS7">
+                                <rect key="frame" x="96.666666666666686" y="326" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="1wG-VR-Kmp"/>
+                                    <constraint firstAttribute="height" constant="200" id="X0e-qr-gk6"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User successfully registered" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dha-I4-yX7">
+                                <rect key="frame" x="15" y="550" width="363" height="27"/>
+                                <fontDescription key="fontDescription" name="NotoSansKannada-Light" family="Noto Sans Kannada" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eyc-dG-W4k">
+                                <rect key="frame" x="126.66666666666669" y="601" width="140" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="140" id="AD3-RP-2sz"/>
+                                    <constraint firstAttribute="height" constant="48" id="kCQ-xN-BJY"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Got it">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="successDidTapped:" destination="9nf-lE-OFD" eventType="touchUpInside" id="f9P-E0-3VT"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Rf7-LE-oFW"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="dha-I4-yX7" firstAttribute="top" secondItem="znU-Wl-bS7" secondAttribute="bottom" constant="24" id="FU7-bU-ygY"/>
+                            <constraint firstItem="dha-I4-yX7" firstAttribute="leading" secondItem="Rf7-LE-oFW" secondAttribute="leading" constant="15" id="Mkq-q4-eKn"/>
+                            <constraint firstItem="Eyc-dG-W4k" firstAttribute="centerX" secondItem="9s4-ZU-Prh" secondAttribute="centerX" id="aUm-Rx-f7o"/>
+                            <constraint firstItem="Rf7-LE-oFW" firstAttribute="trailing" secondItem="dha-I4-yX7" secondAttribute="trailing" constant="15" id="cfI-DY-bC2"/>
+                            <constraint firstItem="znU-Wl-bS7" firstAttribute="centerX" secondItem="9s4-ZU-Prh" secondAttribute="centerX" id="dFQ-J0-fib"/>
+                            <constraint firstItem="znU-Wl-bS7" firstAttribute="centerY" secondItem="9s4-ZU-Prh" secondAttribute="centerY" id="ddQ-kh-0TZ"/>
+                            <constraint firstItem="Eyc-dG-W4k" firstAttribute="top" secondItem="dha-I4-yX7" secondAttribute="bottom" constant="24" id="ka8-UQ-22t"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="gotItButton" destination="Eyc-dG-W4k" id="9Js-ZC-KMT"/>
+                        <outlet property="successButton" destination="Eyc-dG-W4k" id="mib-d1-VLW"/>
+                        <outlet property="succsessLabel" destination="dha-I4-yX7" id="CPY-Zg-nPK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BLW-BQ-Gdj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="801" y="-2"/>
+        </scene>
+        <!--Fail View Controller-->
+        <scene sceneID="EAd-pv-0dZ">
+            <objects>
+                <viewController storyboardIdentifier="FailViewController" id="Bjm-9v-lcq" customClass="FailViewController" customModule="test_abz" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="H1h-uI-4ma">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fail" translatesAutoresizingMaskIntoConstraints="NO" id="hwE-xf-zJe">
+                                <rect key="frame" x="96.666666666666686" y="326" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="ZZa-xK-BhR"/>
+                                    <constraint firstAttribute="height" constant="200" id="xRQ-gq-IFO"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="That email is already registered" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bt1-NT-Gpz">
+                                <rect key="frame" x="15" y="550" width="363" height="27"/>
+                                <fontDescription key="fontDescription" name="NotoSansKannada-Light" family="Noto Sans Kannada" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TKp-JN-ryj">
+                                <rect key="frame" x="126.66666666666669" y="601" width="140" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="EuR-Rr-lup"/>
+                                    <constraint firstAttribute="width" constant="140" id="Iq4-dq-JSP"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Try again">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="failDidTapped:" destination="Bjm-9v-lcq" eventType="touchUpInside" id="A0t-gL-1df"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Bkd-Hl-kzQ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="TKp-JN-ryj" firstAttribute="top" secondItem="Bt1-NT-Gpz" secondAttribute="bottom" constant="24" id="3JB-IL-ThA"/>
+                            <constraint firstItem="Bt1-NT-Gpz" firstAttribute="leading" secondItem="Bkd-Hl-kzQ" secondAttribute="leading" constant="15" id="BZx-Xi-Z13"/>
+                            <constraint firstItem="hwE-xf-zJe" firstAttribute="centerY" secondItem="H1h-uI-4ma" secondAttribute="centerY" id="JhJ-dl-zct"/>
+                            <constraint firstItem="TKp-JN-ryj" firstAttribute="centerX" secondItem="H1h-uI-4ma" secondAttribute="centerX" id="SSO-au-YcH"/>
+                            <constraint firstItem="Bkd-Hl-kzQ" firstAttribute="trailing" secondItem="Bt1-NT-Gpz" secondAttribute="trailing" constant="15" id="cg0-kj-xgY"/>
+                            <constraint firstItem="Bt1-NT-Gpz" firstAttribute="top" secondItem="hwE-xf-zJe" secondAttribute="bottom" constant="24" id="cvz-jS-LgW"/>
+                            <constraint firstItem="hwE-xf-zJe" firstAttribute="centerX" secondItem="H1h-uI-4ma" secondAttribute="centerX" id="yZI-ej-G0t"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="failButton" destination="TKp-JN-ryj" id="Kof-0r-EJ4"/>
+                        <outlet property="failLabel" destination="Bt1-NT-Gpz" id="dky-Bm-nLO"/>
+                        <outlet property="tryAgainButton" destination="TKp-JN-ryj" id="y5X-is-TJb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o5y-gs-4tR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1515" y="-2"/>
         </scene>
     </scenes>
     <resources>
+        <image name="fail" width="200" height="200"/>
+        <image name="success" width="200" height="200"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -36,8 +36,8 @@ class ApplicationRouter: ApplicationRouting, MainRouterDelegate {
     
     required init(with assembly: ApplicationAssemblyProtocol) {
         applicationAssembly = assembly
-        
         setupRouters()
+        signupRouter?.delegate = self
     }
     
     private func setupRouters() {
@@ -74,7 +74,7 @@ class ApplicationRouter: ApplicationRouting, MainRouterDelegate {
         
         switchToStory(with: .users)
     }
-    
+
     // MARK: - Assembly
     
     func navigationAssembly() -> NavigationAssemblyProtocol {
@@ -123,4 +123,10 @@ class ApplicationRouter: ApplicationRouting, MainRouterDelegate {
         }
     }
     
+}
+
+extension ApplicationRouter: SignupRouterDelegate {
+    func signupRouterDidFinish(_ router: SignupRouter) {
+        switchToStory(with: .users)
+    }
 }

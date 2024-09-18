@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol UsersRouting: BaseRouting, DismissRouting {
-//    func showDetailForm(with id: Int, isMovie: Bool, viewController: UIViewController, animated: Bool)
+    func showNoInternetForm(isNoInternet: Bool, viewController: UIViewController, animated: Bool)
 }
 
 class UsersRouter: BaseRouter, UsersRouting {
@@ -31,16 +31,6 @@ class UsersRouter: BaseRouter, UsersRouting {
         
         if navigationController == nil {
             let vc: UsersViewController = assembly.assemblyUsersViewController(with: self)
-          
-            let symbol = "popcorn.fill"
-            let activeImage = UIImage(systemName: symbol)?.withTintColor(.orange, renderingMode: .alwaysOriginal)
-            let inactiveImage = UIImage(systemName: symbol)?.withTintColor(.systemGray, renderingMode: .alwaysOriginal)
-            
-            
-            vc.tabBarItem.title = "Users"
-            vc.tabBarItem.image = inactiveImage
-            vc.tabBarItem.selectedImage = activeImage
-            vc.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .selected)
             
             usersViewController = vc
             navigationController = assembly.assemblyNavigationController(with: vc)
@@ -48,6 +38,10 @@ class UsersRouter: BaseRouter, UsersRouting {
             mainRouter = instantiateMainRouter()
         }
         return navigationController!
+    }
+    
+    func showNoInternetForm(isNoInternet: Bool, viewController: UIViewController, animated: Bool) {
+        mainRouter?.showNoInternetForm(isNoInternet: isNoInternet, viewController: viewController, animated: animated)
     }
     
     func dissmiss(viewController: UIViewController, animated: Bool, completion: (() -> ())?) {

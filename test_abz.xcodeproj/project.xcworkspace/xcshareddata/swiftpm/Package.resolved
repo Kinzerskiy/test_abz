@@ -1,0 +1,24 @@
+{
+  "originHash" : "3fdcf477a3855ff522ffaeac1e6f5c600ac9cd4fabe4ad512e87db15f905c0eb",
+  "pins" : [
+    {
+      "identity" : "kingfisher",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/onevcat/Kingfisher",
+      "state" : {
+        "revision" : "06b5580411d5a74a460410c25382c221eff57748",
+        "version" : "8.0.0"
+      }
+    },
+    {
+      "identity" : "reachability.swift?tab=readme-ov-file",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ashleymills/Reachability.swift?tab=readme-ov-file",
+      "state" : {
+        "branch" : "master",
+        "revision" : "7cbd73f46a7dfaeca079e18df7324c6de6d1834a"
+      }
+    }
+  ],
+  "version" : 3
+}

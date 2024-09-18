@@ -50,9 +50,67 @@
             </objects>
             <point key="canvasLocation" x="895" y="4"/>
         </scene>
+        <!--No Internet View Controller-->
+        <scene sceneID="xzL-o2-zHp">
+            <objects>
+                <viewController storyboardIdentifier="NoInternetViewController" id="Prf-jP-aqY" customClass="NoInternetViewController" customModule="test_abz" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EmO-83-7fa">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noInternet" translatesAutoresizingMaskIntoConstraints="NO" id="uoX-L6-LgB">
+                                <rect key="frame" x="96.666666666666686" y="326" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="hUz-qR-NfK"/>
+                                    <constraint firstAttribute="height" constant="200" id="iRF-Ke-eI8"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There is no internet connection" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pA6-JX-gFC">
+                                <rect key="frame" x="20" y="550" width="353" height="27"/>
+                                <fontDescription key="fontDescription" name="NotoSansKannada-Light" family="Noto Sans Kannada" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VrC-8h-yri">
+                                <rect key="frame" x="126.66666666666669" y="601" width="140" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="140" id="2a0-3p-nul"/>
+                                    <constraint firstAttribute="height" constant="48" id="VI3-Od-q9t"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Try again">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="tryAgainDidTap:" destination="Prf-jP-aqY" eventType="touchUpInside" id="enc-q0-ckF"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="54Y-h3-C47"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="uoX-L6-LgB" firstAttribute="centerX" secondItem="EmO-83-7fa" secondAttribute="centerX" id="58l-sw-KWd"/>
+                            <constraint firstItem="pA6-JX-gFC" firstAttribute="leading" secondItem="54Y-h3-C47" secondAttribute="leading" constant="20" id="DSi-M4-qSL"/>
+                            <constraint firstItem="VrC-8h-yri" firstAttribute="centerX" secondItem="EmO-83-7fa" secondAttribute="centerX" id="Gai-zd-9ul"/>
+                            <constraint firstItem="VrC-8h-yri" firstAttribute="top" secondItem="pA6-JX-gFC" secondAttribute="bottom" constant="24" id="Ri1-NL-NG0"/>
+                            <constraint firstItem="54Y-h3-C47" firstAttribute="trailing" secondItem="pA6-JX-gFC" secondAttribute="trailing" constant="20" id="WXf-QT-VfC"/>
+                            <constraint firstItem="pA6-JX-gFC" firstAttribute="top" secondItem="uoX-L6-LgB" secondAttribute="bottom" constant="24" id="dIJ-J0-lo3"/>
+                            <constraint firstItem="uoX-L6-LgB" firstAttribute="centerY" secondItem="EmO-83-7fa" secondAttribute="centerY" id="xtp-05-uT8"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="noInternetLabel" destination="pA6-JX-gFC" id="yNS-82-Bmg"/>
+                        <outlet property="tryAgainButton" destination="VrC-8h-yri" id="P6I-V4-cIB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KhU-6T-7nt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1648" y="4"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Logo" width="160" height="108"/>
+        <image name="noInternet" width="200" height="200"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

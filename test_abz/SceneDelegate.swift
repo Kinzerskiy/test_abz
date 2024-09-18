@@ -21,10 +21,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = window
         
         UIWindow.appearance().overrideUserInterfaceStyle = .light
-       
+        
         
         setupRouting()
         setupWindow()
+    }
+    
+    func sceneDidBecomeActive(_ scene: UIScene) {
+        ViewModel.shared.reset()
+    }
+    
+    func sceneWillResignActive(_ scene: UIScene) {
+        ViewModel.shared.reset()
     }
     
     // MARK: - private
@@ -44,4 +52,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             applicationRouter?.showIntroForm(from: window?.rootViewController, animated: false, completion: nil)
         }
     }
+    
+    
 }

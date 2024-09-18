@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UsersTableViewCell" rowHeight="160" id="KGk-i7-Jjw" customClass="UsersTableViewCell" customModule="test_abz" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="347" height="160"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="347" height="160"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fOR-uQ-Swo">
+                        <rect key="frame" x="16" y="24" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="84Y-gJ-GeC"/>
+                            <constraint firstAttribute="width" constant="50" id="PSh-bw-Gog"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mDB-zy-ECW">
+                        <rect key="frame" x="82" y="24" width="260" height="21.666666666666671"/>
+                        <fontDescription key="fontDescription" name="NotoSansKannada-Light" family="Noto Sans Kannada" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VyJ-Qo-0za">
+                        <rect key="frame" x="82" y="49.666666666666664" width="260" height="18.999999999999993"/>
+                        <fontDescription key="fontDescription" name="NotoSansKannada-Light" family="Noto Sans Kannada" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JBV-xv-NX3">
+                        <rect key="frame" x="82" y="76.666666666666671" width="240" height="19"/>
+                        <fontDescription key="fontDescription" name="NotoSansKannada-Light" family="Noto Sans Kannada" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WgF-3r-akm">
+                        <rect key="frame" x="82" y="99.666666666666671" width="260" height="19"/>
+                        <fontDescription key="fontDescription" name="NotoSansKannada-Light" family="Noto Sans Kannada" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="fOR-uQ-Swo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="1M1-sh-Fjh"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="JBV-xv-NX3" secondAttribute="trailing" constant="5" id="3It-NS-gQU"/>
+                    <constraint firstItem="WgF-3r-akm" firstAttribute="leading" secondItem="fOR-uQ-Swo" secondAttribute="trailing" constant="16" id="6y2-5n-RsT"/>
+                    <constraint firstItem="VyJ-Qo-0za" firstAttribute="leading" secondItem="fOR-uQ-Swo" secondAttribute="trailing" constant="16" id="9cU-ps-AuJ"/>
+                    <constraint firstAttribute="trailing" secondItem="VyJ-Qo-0za" secondAttribute="trailing" constant="5" id="Ia6-Gt-5bR"/>
+                    <constraint firstItem="JBV-xv-NX3" firstAttribute="top" secondItem="VyJ-Qo-0za" secondAttribute="bottom" constant="8" id="KsA-oW-qNJ"/>
+                    <constraint firstItem="JBV-xv-NX3" firstAttribute="leading" secondItem="fOR-uQ-Swo" secondAttribute="trailing" constant="16" id="U5I-rH-fnW"/>
+                    <constraint firstAttribute="trailing" secondItem="WgF-3r-akm" secondAttribute="trailing" constant="5" id="bdP-5V-ued"/>
+                    <constraint firstItem="mDB-zy-ECW" firstAttribute="top" secondItem="fOR-uQ-Swo" secondAttribute="top" id="eLK-FH-aOu"/>
+                    <constraint firstItem="mDB-zy-ECW" firstAttribute="leading" secondItem="fOR-uQ-Swo" secondAttribute="trailing" constant="16" id="gPj-Hg-BN3"/>
+                    <constraint firstItem="fOR-uQ-Swo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="24" id="hQ1-Ea-DYC"/>
+                    <constraint firstItem="WgF-3r-akm" firstAttribute="top" secondItem="JBV-xv-NX3" secondAttribute="bottom" constant="4" id="oBy-ft-MXM"/>
+                    <constraint firstItem="VyJ-Qo-0za" firstAttribute="top" secondItem="mDB-zy-ECW" secondAttribute="bottom" constant="4" id="qzf-rU-EaU"/>
+                    <constraint firstAttribute="trailing" secondItem="mDB-zy-ECW" secondAttribute="trailing" constant="5" id="uP7-Rn-cbz"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="emailLabel" destination="JBV-xv-NX3" id="vf5-WE-t9K"/>
+                <outlet property="nameLabel" destination="mDB-zy-ECW" id="h95-V3-tjA"/>
+                <outlet property="phoneLabel" destination="WgF-3r-akm" id="feL-f3-5KA"/>
+                <outlet property="positionLabel" destination="VyJ-Qo-0za" id="yeU-3g-V8c"/>
+                <outlet property="userPhoto" destination="fOR-uQ-Swo" id="w9f-zG-hTX"/>
+            </connections>
+            <point key="canvasLocation" x="109.16030534351144" y="60.563380281690144"/>
+        </tableViewCell>
+    </objects>
+</document>

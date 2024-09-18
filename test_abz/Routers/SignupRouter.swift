@@ -9,7 +9,11 @@ import Foundation
 import UIKit
 
 protocol SignupRouting: BaseRouting, DismissRouting {
-//    func showDetailForm(with id: Int, isMovie: Bool, viewController: UIViewController, animated: Bool)
+    func showDetailForm(isRegistered: Bool, viewController: UIViewController, animated: Bool)
+}
+
+protocol SignupRouterDelegate: AnyObject {
+    func signupRouterDidFinish(_ router: SignupRouter)
 }
 
 class SignupRouter: BaseRouter, SignupRouting {
@@ -19,6 +23,9 @@ class SignupRouter: BaseRouter, SignupRouting {
     private var signupViewController: SignupViewController?
     private var navigationController: UINavigationController?
     
+    
+    weak var delegate: SignupRouterDelegate?
+
     // MARK: - Memory management
     
     override init(with assembly: NavigationAssemblyProtocol) {
@@ -32,16 +39,6 @@ class SignupRouter: BaseRouter, SignupRouting {
         if navigationController == nil {
             let vc: SignupViewController = assembly.assemblySignupViewController(with: self)
           
-            let symbol = "popcorn.fill"
-            let activeImage = UIImage(systemName: symbol)?.withTintColor(.orange, renderingMode: .alwaysOriginal)
-            let inactiveImage = UIImage(systemName: symbol)?.withTintColor(.systemGray, renderingMode: .alwaysOriginal)
-            
-            
-            vc.tabBarItem.title = "SignUp"
-            vc.tabBarItem.image = inactiveImage
-            vc.tabBarItem.selectedImage = activeImage
-            vc.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .selected)
-            
             signupViewController = vc
             navigationController = assembly.assemblyNavigationController(with: vc)
             
@@ -50,6 +47,22 @@ class SignupRouter: BaseRouter, SignupRouting {
         return navigationController!
     }
     
+    
+    func showDetailForm(isRegistered: Bool, viewController: UIViewController, animated: Bool) {
+        
+        if isRegistered {
+            let vc: SuccessViewController = assembly.assemblySuccessViewController(with: self)
+            
+            vc.modalPresentationStyle = .fullScreen
+            vc.delegate = self
+            viewController.present(vc, animated: animated, completion: nil)
+        } else {
+            let vc: FailViewController = assembly.assemblyFailViewController(with: self)
+            
+            vc.modalPresentationStyle = .fullScreen
+            viewController.present(vc, animated: animated, completion: nil)
+        }
+    }
     
     func dissmiss(viewController: UIViewController, animated: Bool, completion: (() -> ())?) {
         let CompletionBlock: () -> Void = { () -> () in
@@ -81,5 +94,12 @@ extension SignupRouter {
         let router = MainRouter.init(with: navigationController, assembly: assembly)
         
         return router
+    }
+}
+
+extension SignupRouter: SuccessViewControllerDelegate {
+    func successViewControllerDidFinish(_ controller: SuccessViewController) {
+        self.dissmiss(viewController: controller, animated: true, completion: nil)
+        self.delegate?.signupRouterDidFinish(self)
     }
 }

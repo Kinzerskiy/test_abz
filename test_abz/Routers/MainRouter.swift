@@ -9,8 +9,7 @@ import Foundation
 import UIKit
 
 protocol MainRouting: BaseRouting, DismissRouting, IntroViewControllerDelegate {
-//    func showDetailForm(with id: Int, isMovie: Bool, viewController: UIViewController, animated: Bool)
-//    func showPersonForm(with id: Int, isMovie: Bool, viewController: UIViewController, animated: Bool)
+    func showNoInternetForm(isNoInternet: Bool, viewController: UIViewController, animated: Bool)
 }
 
 protocol MainRouterDelegate {
@@ -52,6 +51,19 @@ class MainRouter: BaseRouter, MainRouting {
             
         }
         return navigationController!
+    }
+    
+    func showNoInternetForm(isNoInternet: Bool, viewController: UIViewController, animated: Bool) {
+        let vc: NoInternetViewController = assembly.assemblyNoInternetViewController(with: self)
+        
+        vc.isNoInternet = isNoInternet
+        
+        if let presentingVC = viewController as? NoInternetDelegate {
+            vc.delegate = presentingVC
+        }
+        
+        vc.modalPresentationStyle = .fullScreen
+        viewController.present(vc, animated: animated, completion: nil)
     }
     
     func dissmiss(viewController: UIViewController, animated: Bool, completion: (() -> ())?) {

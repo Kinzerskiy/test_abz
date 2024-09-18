@@ -22,7 +22,7 @@ class IntroViewController: UIViewController {
     }
     
     func setupUI() {
-        self.view.backgroundColor = UIColor(hex: "F4E041")
+        self.view.backgroundColor = AppColors.uniqueYellow
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             self.introDelegate?.introControllerDidFinishLoading(viewController: self)
