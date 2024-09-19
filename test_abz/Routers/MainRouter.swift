@@ -35,7 +35,7 @@ class MainRouter: BaseRouter, MainRouting {
         self.navigationController = navigationController
     }
     
-    // MARK: - UsersRouting
+    // MARK: - MainRouting
     
     override func initialViewController() -> UIViewController {
         

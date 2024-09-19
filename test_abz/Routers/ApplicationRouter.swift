@@ -31,6 +31,8 @@ class ApplicationRouter: ApplicationRouting, MainRouterDelegate {
     private var usersRouter: UsersRouter?
     private var signupRouter: SignupRouter?
 
+    private var usersViewController: UIViewController?
+    private var signupViewController: UIViewController?
     
     // MARK: - Memory management
     
@@ -47,18 +49,16 @@ class ApplicationRouter: ApplicationRouting, MainRouterDelegate {
     }
     
     // MARK: - BaseRouting
-    
+
     func initialViewController() -> UIViewController? {
-        
-        let rootItem: Array<UIViewController> = [
-            intialialViewControllerForItem(with: .users),
-            intialialViewControllerForItem(with: .signup)
-        ]
-        
-        rootContentController = navigationAssembly().assemblyTabbarController(with: rootItem)
-        
+        usersViewController = intialialViewControllerForItem(with: .users)
+        signupViewController = intialialViewControllerForItem(with: .signup)
+
+        let rootItems = [usersViewController!, signupViewController!]
+        rootContentController = navigationAssembly().assemblyTabbarController(with: rootItems)
         return rootContentController
     }
+
     
     // MARK: - ApplicationRouting
     
@@ -101,9 +101,21 @@ class ApplicationRouter: ApplicationRouting, MainRouterDelegate {
     }
     
     // MARK: - Private
-    
+    private func indexForStoryType(_ type: ApplicationStoryType) -> Int? {
+        switch type {
+        case .users:
+            return 0
+        case .signup:
+            return 1
+        default:
+            return nil
+        }
+    }
+
     private func switchToStory(with type: ApplicationStoryType) {
-        rootContentController?.selectedViewController = intialialViewControllerForItem(with: type)
+        if let index = indexForStoryType(type) {
+            rootContentController?.selectedIndex = index
+        }
         
         if activeStoryType != type {
             previousStoryType = activeStoryType
@@ -111,6 +123,7 @@ class ApplicationRouter: ApplicationRouting, MainRouterDelegate {
         
         activeStoryType = type
     }
+
     
     private func intialialViewControllerForItem(with type: ApplicationStoryType) -> UIViewController {
         switch type {

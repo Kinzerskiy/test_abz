@@ -9,8 +9,14 @@ import UIKit
 
 class MainTabBarViewController: UITabBarController, UITabBarControllerDelegate {
     
-    // MARK: - Lifecycle
+    // Override the selectedIndex property
+    override var selectedIndex: Int {
+        didSet {
+            setupCustomTabBarItems()
+        }
+    }
     
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
@@ -22,7 +28,6 @@ class MainTabBarViewController: UITabBarController, UITabBarControllerDelegate {
     }
     
     // MARK: - Custom Tab Bar Item Setup
-    
     private func setupCustomTabBarItems() {
         guard tabBar.items != nil else { return }
         let tabBarButtons = tabBar.subviews.filter { $0.isUserInteractionEnabled }
@@ -80,7 +85,6 @@ class MainTabBarViewController: UITabBarController, UITabBarControllerDelegate {
     }
     
     // MARK: - UITabBarControllerDelegate
-    
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         setupCustomTabBarItems()
     }

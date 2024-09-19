@@ -9,24 +9,24 @@ import UIKit
 
 class SignupViewController: UIViewController {
     
-    var router: SignupRouting?
-    
+    // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var signupButton: UIButton!
     @IBOutlet weak var workingWithLabel: UILabel!
     
+    // MARK: - Properties
+    var router: SignupRouting?
     var activityIndicator: UIActivityIndicatorView!
     var overlayView: UIView?
-    
     var viewModel = ViewModel.shared
-    
     var fieldValidationStates = [Int: Bool]() {
         didSet {
             updateSignupButtonState()
         }
     }
     
+    // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -39,6 +39,7 @@ class SignupViewController: UIViewController {
         tableView.reloadData()
     }
     
+    // MARK: - Setup Methods
     func setupUI() {
         signupButton.titleLabel?.font = UIFont.nunitoSansRegular(ofSize: 18)
         workingWithLabel.font = UIFont.nunitoSansExtraLight(ofSize: 20)
@@ -69,17 +70,6 @@ class SignupViewController: UIViewController {
         }
     }
     
-    
-    func showLoadingOverlay() {
-        overlayView?.isHidden = false
-        activityIndicator.startAnimating()
-    }
-    
-    func hideLoadingOverlay() {
-        overlayView?.isHidden = true
-        activityIndicator.stopAnimating()
-    }
-    
     func setupTableView() {
         tableView.register(UINib(nibName: "FieldTableViewCell", bundle: nil), forCellReuseIdentifier: "FieldTableViewCell")
         tableView.register(UINib(nibName: "PositionTableViewCell", bundle: nil), forCellReuseIdentifier: "PositionTableViewCell")
@@ -90,38 +80,7 @@ class SignupViewController: UIViewController {
         tableView.separatorStyle = .none
     }
     
-    func updateSignupButtonState() {
-        let allFieldsValid = fieldValidationStates.values.allSatisfy { $0 } && viewModel.isUserDataValid
-        signupButton.isEnabled = allFieldsValid
-        signupButton.backgroundColor = allFieldsValid ? AppColors.uniqueYellow : UIColor.gray.withAlphaComponent(0.5)
-        signupButton.alpha = allFieldsValid ? 1.0 : 0.5
-    }
-    
-    func handleFieldValidationChanged(at index: Int, isValid: Bool) {
-        fieldValidationStates[index] = isValid
-        updateSignupButtonState()
-    }
-    
-    func presentPhotoOptions() {
-        let alert = UIAlertController(title: nil, message: "Choose how you want to add a photo", preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { _ in
-            self.presentCameraPicker()
-        }))
-        alert.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { _ in
-            self.presentGalleryPicker()
-        }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
-        
-        if let popoverController = alert.popoverPresentationController {
-            popoverController.sourceView = self.view
-            popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
-            popoverController.permittedArrowDirections = []
-        }
-        
-        self.present(alert, animated: true, completion: nil)
-    }
-    
+    // MARK: - Networking Methods
     private func fetchPositions() {
         showLoadingOverlay()
         viewModel.fetchPositions { [weak self] success in
@@ -152,11 +111,57 @@ class SignupViewController: UIViewController {
         }
     }
     
+    // MARK: - Helper Methods
+    func updateSignupButtonState() {
+        let allFieldsValid = fieldValidationStates.values.allSatisfy { $0 } && viewModel.isUserDataValid
+        signupButton.isEnabled = allFieldsValid
+        signupButton.backgroundColor = allFieldsValid ? AppColors.uniqueYellow : UIColor.gray.withAlphaComponent(0.5)
+        signupButton.alpha = allFieldsValid ? 1.0 : 0.5
+    }
+    
+    func handleFieldValidationChanged(at index: Int, isValid: Bool) {
+        fieldValidationStates[index] = isValid
+        updateSignupButtonState()
+    }
+    
+    func showLoadingOverlay() {
+        overlayView?.isHidden = false
+        activityIndicator.startAnimating()
+    }
+    
+    func hideLoadingOverlay() {
+        overlayView?.isHidden = true
+        activityIndicator.stopAnimating()
+    }
+    
+    func presentPhotoOptions() {
+        let alert = UIAlertController(title: nil, message: "Choose how you want to add a photo", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { _ in
+            self.presentCameraPicker()
+        }))
+        alert.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { _ in
+            self.presentGalleryPicker()
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        
+        if let popoverController = alert.popoverPresentationController {
+            popoverController.sourceView = self.view
+            popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+            popoverController.permittedArrowDirections = []
+        }
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
+    // MARK: - Actions
     @IBAction func postDidTap(_ sender: Any) {
         registerUser()
     }
 }
 
+// MARK: - UITableViewDataSource and UITableViewDelegate
 extension SignupViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -248,6 +253,7 @@ extension SignupViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
+// MARK: - UIImagePickerControllerDelegate and UINavigationControllerDelegate
 extension SignupViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func presentGalleryPicker() {

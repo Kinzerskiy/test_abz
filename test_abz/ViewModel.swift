@@ -11,23 +11,31 @@ import UIKit
 
 class ViewModel {
     
+    // MARK: - Singleton Instance
     static let shared = ViewModel()
     
-    var reachability: Reachability?
+    // MARK: - Typealiases
     typealias OperationCompletion = (Bool, String?) -> Void
     
+    // MARK: - Properties
+    
+    // Network Reachability
+    var reachability: Reachability?
+    
+    // Callbacks
     var onNetworkUnavailable: (() -> Void)?
     var onNetworkAvailable: (() -> Void)?
     var onFetchSuccess: (() -> Void)?
     var onFetchFailure: ((String) -> Void)?
     
+    // User Data
     var users: [User] = []
     var positions: [Position] = []
     var page = 1
     var isLoading = false
     var hasMoreUsers = true
     
-    
+    // User Registration Data
     var userName: String?
     var userEmail: String?
     var userPhone: String?
@@ -47,12 +55,18 @@ class ViewModel {
         return true
     }
     
+    // MARK: - Initializer
     init() {
         setupReachability()
     }
     
-    //MARK: NETWORK
+    // MARK: - Deinitializer
+    deinit {
+        reachability?.stopNotifier()
+        NotificationCenter.default.removeObserver(self, name: .reachabilityChanged, object: reachability)
+    }
     
+    // MARK: - Network Reachability Methods
     func setupReachability() {
         reachability = try? Reachability()
         NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged), name: .reachabilityChanged, object: reachability)
@@ -91,11 +105,6 @@ class ViewModel {
         setupReachability()
     }
     
-    deinit {
-        reachability?.stopNotifier()
-        NotificationCenter.default.removeObserver(self, name: .reachabilityChanged, object: reachability)
-    }
-    
     func checkInternetConnectionAndFetchUsers(resetData: Bool, completion: @escaping OperationCompletion) {
         guard let reachability = reachability, reachability.connection != .unavailable else {
             completion(false, "Internet connection is unavailable.")
@@ -105,7 +114,7 @@ class ViewModel {
         fetchUsers(resetData: resetData, completion: completion)
     }
     
-    //MARK: Users flow
+    // MARK: - User Data Methods
     
     func fetchUsers(resetData: Bool, completion: @escaping OperationCompletion) {
         if resetData {
@@ -146,20 +155,20 @@ class ViewModel {
         textFieldsContent.removeAll()
     }
     
-    //MARK: SignUP
+    // MARK: - User Registration Methods
     
     func fetchPositions(completion: @escaping (Bool) -> Void) {
-         NetworkManager.shared.fetchPositions { [weak self] result in
-             switch result {
-             case .success(let positions):
-                 self?.positions = positions
-                 completion(true)
-             case .failure(let error):
-                 print("Error fetching positions: \(error.localizedDescription)")
-                 completion(false)
-             }
-         }
-     }
+        NetworkManager.shared.fetchPositions { [weak self] result in
+            switch result {
+            case .success(let positions):
+                self?.positions = positions
+                completion(true)
+            case .failure(let error):
+                print("Error fetching positions: \(error.localizedDescription)")
+                completion(false)
+            }
+        }
+    }
     
     func registerUser(completion: @escaping (Bool) -> Void) {
         guard isUserDataValid else {
@@ -167,15 +176,27 @@ class ViewModel {
             return
         }
         
+        guard let name = userName,
+              let email = userEmail,
+              let phone = userPhone,
+              let positionIndex = selectedPositionIndex,
+              let image = userImage else {
+            completion(false)
+            return
+        }
+        
         let params: [String: Any] = [
-            "name": userName!,
-            "email": userEmail!,
-            "phone": userPhone!,
-            "position_id": selectedPositionIndex! + 1
+            "name": name,
+            "email": email,
+            "phone": phone,
+            "position_id": positionIndex + 1
         ]
         
-        compressImage(userImage!) { [weak self] compressedImage in
-            guard let compressedImage = compressedImage else { return }
+        compressImage(image) { [weak self] compressedImage in
+            guard let compressedImage = compressedImage else {
+                completion(false)
+                return
+            }
             
             NetworkManager.shared.registerUserWithToken(params: params, image: compressedImage, imageName: "userPhoto") { success, error in
                 if success {
@@ -187,7 +208,9 @@ class ViewModel {
             }
         }
     }
-
+    
+    // MARK: - Image Handling Methods
+    
     func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
         let newSize = targetSize
         let rect = CGRect(origin: .zero, size: newSize)
@@ -200,7 +223,7 @@ class ViewModel {
     
     func compressImage(_ image: UIImage, completion: @escaping (UIImage?) -> Void) {
         DispatchQueue.global(qos: .userInitiated).async {
-            let maxFileSize = 5 * 500 * 500
+            let maxFileSize = 1_250_000 // Approximately 1.25 MB
             var minCompression: CGFloat = 0.1
             var maxCompression: CGFloat = 1.0
             var compression: CGFloat = 1.0
@@ -234,6 +257,4 @@ class ViewModel {
             }
         }
     }
-
-
 }

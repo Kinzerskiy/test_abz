@@ -9,10 +9,10 @@ import UIKit
 
 class NavigationController: UINavigationController {
     
+    // MARK: - Properties
     public var transitionDelegate: UINavigationControllerDelegate?
     
     // MARK: - View
-    
     override func viewDidLoad() {
         interactivePopGestureRecognizer?.delegate = self
         navigationBar.isTranslucent = true
@@ -22,7 +22,6 @@ class NavigationController: UINavigationController {
     
     
     // MARK: - Orientation
-    
     func supportedInterfaceOrientations() -> UIInterfaceOrientationMask? {
         return topViewController?.supportedInterfaceOrientations
     }
@@ -36,6 +35,7 @@ class NavigationController: UINavigationController {
     }
 }
 
+// MARK: - UINavigationControllerDelegate and UIGestureRecognizerDelegate
 extension NavigationController: UINavigationControllerDelegate, UIGestureRecognizerDelegate {
     
 }

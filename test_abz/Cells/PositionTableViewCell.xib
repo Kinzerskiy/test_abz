@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,32 +17,28 @@
                 <rect key="frame" x="0.0" y="0.0" width="396" height="171"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Cbz-9k-Mx8">
-                        <rect key="frame" x="15" y="61.666666666666657" width="366" height="48"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cou-zx-smP">
-                                <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="48" id="jY7-jU-S1D"/>
-                                    <constraint firstAttribute="height" constant="48" id="stZ-wR-qlK"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="Radiobutton-fill"/>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aUb-Un-yJB">
-                                <rect key="frame" x="53" y="0.0" width="313" height="48"/>
-                                <fontDescription key="fontDescription" name="NotoSansKannada-Light" family="Noto Sans Kannada" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                    </stackView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cou-zx-smP">
+                        <rect key="frame" x="10" y="60.666666666666657" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="jY7-jU-S1D"/>
+                            <constraint firstAttribute="height" constant="50" id="stZ-wR-qlK"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" image="Radiobutton-fill"/>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aUb-Un-yJB">
+                        <rect key="frame" x="70" y="72" width="316" height="27"/>
+                        <fontDescription key="fontDescription" name="NotoSansKannada-Light" family="Noto Sans Kannada" pointSize="20"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="Cbz-9k-Mx8" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="67Q-Ph-GcX"/>
-                    <constraint firstItem="Cbz-9k-Mx8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="JjZ-4b-IYZ"/>
-                    <constraint firstItem="Cbz-9k-Mx8" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="N6v-gd-vgI"/>
-                    <constraint firstAttribute="trailing" secondItem="Cbz-9k-Mx8" secondAttribute="trailing" constant="15" id="mdA-6j-thd"/>
+                    <constraint firstItem="aUb-Un-yJB" firstAttribute="leading" secondItem="Cou-zx-smP" secondAttribute="trailing" constant="10" id="Rgb-mY-pXS"/>
+                    <constraint firstAttribute="trailing" secondItem="aUb-Un-yJB" secondAttribute="trailing" constant="10" id="Wuy-MC-4ed"/>
+                    <constraint firstItem="Cou-zx-smP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="XW3-ZR-aSq"/>
+                    <constraint firstItem="Cou-zx-smP" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="hJR-00-L2G"/>
+                    <constraint firstItem="aUb-Un-yJB" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="xNj-wa-EzB"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

@@ -24,7 +24,7 @@ class PositionTableViewCell: UITableViewCell {
         positionLabel.text = position
         updateButtonSelection(isSelected)
     }
-
+    
     private func updateButtonSelection(_ isSelected: Bool) {
         let imageName = isSelected ? "Radiobutton-fill" : "Radiobutton"
         selectionButton.setImage(UIImage(named: imageName), for: .normal)

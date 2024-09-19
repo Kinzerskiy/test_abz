@@ -9,7 +9,11 @@ import Foundation
 import UIKit
 
 class NetworkManager {
+    
+    // MARK: - Singleton Instance
     static let shared = NetworkManager()
+    
+    // MARK: - Private Methods
     
     private func createRequest(urlString: String, method: String, body: Data?) -> URLRequest? {
         guard let url = URL(string: urlString) else {
@@ -24,6 +28,11 @@ class NetworkManager {
         return request
     }
     
+    private func generateBoundary() -> String {
+        return "Boundary-\(UUID().uuidString)"
+    }
+    
+    // MARK: - Public Methods
     
     func performRequest<T: Decodable>(_ request: URLRequest, completion: @escaping (Result<T, Error>) -> Void) {
         
@@ -45,11 +54,9 @@ class NetworkManager {
                 return
             }
             
-            
             if let data = data, let responseBodyString = String(data: data, encoding: .utf8) {
                 print("Received Response Body: \(responseBodyString)")
             } else {
-                
                 completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "No data received from server"])))
                 return
             }
@@ -70,8 +77,7 @@ class NetworkManager {
         }.resume()
     }
     
-    
-    //MARK: Fetch Users
+    // MARK: - Fetching Data Methods
     
     func fetchUsers(page: Int, count: Int, completion: @escaping (Result<UsersResponse, Error>) -> Void) {
         let urlString = "https://frontend-test-assignment-api.abz.agency/api/v1/users?page=\(page)&count=\(count)"
@@ -81,31 +87,28 @@ class NetworkManager {
         }
         performRequest(request, completion: completion)
     }
-    //MARK: Fetch positions
     
     func fetchPositions(completion: @escaping (Result<[Position], Error>) -> Void) {
-           let urlString = "https://frontend-test-assignment-api.abz.agency/api/v1/positions"
-           
-           guard let request = createRequest(urlString: urlString, method: "GET", body: nil) else {
-               completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to create URLRequest"])))
-               return
-           }
-           
-           performRequest(request) { (result: Result<PositionResponse, Error>) in
-               switch result {
-               case .success(let positionResponse):
-                   if positionResponse.success {
-                       completion(.success(positionResponse.positions))
-                   } else {
-                       completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to fetch positions"])))
-                   }
-               case .failure(let error):
-                   completion(.failure(error))
-               }
-           }
-       }
-    
-    //MARK: Create user
+        let urlString = "https://frontend-test-assignment-api.abz.agency/api/v1/positions"
+        
+        guard let request = createRequest(urlString: urlString, method: "GET", body: nil) else {
+            completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to create URLRequest"])))
+            return
+        }
+        
+        performRequest(request) { (result: Result<PositionResponse, Error>) in
+            switch result {
+            case .success(let positionResponse):
+                if positionResponse.success {
+                    completion(.success(positionResponse.positions))
+                } else {
+                    completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to fetch positions"])))
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
     
     func fetchToken(completion: @escaping (Result<String, Error>) -> Void) {
         let urlString = "https://frontend-test-assignment-api.abz.agency/api/v1/token"
@@ -134,10 +137,7 @@ class NetworkManager {
         }.resume()
     }
     
-    
-    private func generateBoundary() -> String {
-        return "Boundary-\(UUID().uuidString)"
-    }
+    // MARK: - User Registration Methods
     
     func createMultipartRequest(urlString: String, method: String, params: [String: Any], image: UIImage?, imageName: String, token: String) -> URLRequest? {
         guard let url = URL(string: urlString) else { return nil }
@@ -147,7 +147,6 @@ class NetworkManager {
         request.httpMethod = method
         request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
         request.setValue("\(token)", forHTTPHeaderField: "Token")
-        
         
         let body = NSMutableData()
         
@@ -195,10 +194,9 @@ class NetworkManager {
             }
         }
     }
-
 }
 
-
+// MARK: - NSMutableData Extension
 extension NSMutableData {
     func appendString(_ string: String) {
         let data = string.data(using: String.Encoding.utf8, allowLossyConversion: true)

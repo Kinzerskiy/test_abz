@@ -13,14 +13,17 @@ protocol IntroViewControllerDelegate {
 
 class IntroViewController: UIViewController {
     
+    // MARK: - Properties
     var router: MainRouting?
     var introDelegate: IntroViewControllerDelegate?
     
+    // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
     }
     
+    // MARK: - UI Setup
     func setupUI() {
         self.view.backgroundColor = AppColors.uniqueYellow
         
